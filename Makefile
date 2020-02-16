@@ -184,6 +184,7 @@ UPROGS=\
 	_hello\
 	_cp\
 	_mv\
+	_try\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
