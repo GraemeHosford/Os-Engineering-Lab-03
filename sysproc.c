@@ -97,10 +97,10 @@ int sys_trace(void) {
 	}
 
 	if (a == 0) {
-		proc->printSys = 0;
+		myproc()->printSys = 0;
 	} else {
-		proc->printSys = 1;
+		myproc()->printSys = 1;
 	}
 
-	return proc->sysCalls;
+	return myproc()->sysCalls;
 }
