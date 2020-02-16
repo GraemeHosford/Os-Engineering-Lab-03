@@ -8,7 +8,7 @@ int main() {
 	// Make a system call to increment number
 	getpid();
 
-	printf(1, "System calls made: %d\n", trace(0));
+	printf(1, "Total System calls made in try.c: %d\n", trace(0));
 
 	exit();
 }
