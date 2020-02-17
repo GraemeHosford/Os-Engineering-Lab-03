@@ -24,6 +24,7 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int trace(int trace);
+int getprocs(int max, struct uproc table[]);
 
 // ulib.c
 int stat(const char*, struct stat*);

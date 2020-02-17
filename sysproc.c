@@ -104,3 +104,15 @@ int sys_trace(void) {
 
 	return myproc()->sysCalls;
 }
+
+int sys_getprocs(void) {
+	int max;
+	int proctable;
+
+	if (argint(0, &max) < 0) {
+		printf(1, "Error getting max processes\n");
+		return -1;
+	}
+
+	
+}
