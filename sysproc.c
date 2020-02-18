@@ -6,6 +6,7 @@
 #include "memlayout.h"
 #include "mmu.h"
 #include "proc.h"
+#include "uproc.h"
 
 int
 sys_fork(void)
@@ -103,4 +104,19 @@ int sys_trace(void) {
 	}
 
 	return myproc()->sysCalls;
+}
+
+int sys_getprocs(void) {
+	int max;
+	struct uproc *proctable;
+
+	if (argint(0, &max) < 0) {
+		return -1;
+	}
+
+	if (argptr(1, (void*)&proctable, sizeof(struct uproc) * max) < 0) {
+		return -1;
+	}
+
+	return getprocs(max, proctable);
 }
