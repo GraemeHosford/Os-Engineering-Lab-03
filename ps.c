@@ -4,7 +4,7 @@
 
 int main() {
 	const int MAX_PROCS = 10;
-	struct uproc *proctable = malloc(sizeof(*table) * MAX_PROCS);
+	struct uproc *proctable = malloc(sizeof(struct uproc) * MAX_PROCS);
 
 
 	if (proctable == 0) {
@@ -20,25 +20,27 @@ int main() {
 		exit();
 	}
 
-	printf(1, "PID\tPPID\tState\tName\n");
-	while (uproc != proctable[MAX_PROCS- 1]) {
-		printf(1, "%d\t%d\t", uproc->pid, uproc->ppid);
+	struct uproc *uproc = &proctable[0];
 
-		if (p->state == UNUSED) {
+	printf(1, "PID    PPID      State       Name\n");
+	while (uproc != &proctable[MAX_PROCS- 1]) {
+		printf(1, " %d      %d        ", uproc->pid, uproc->ppid);
+
+		if (uproc->state == 0) {
 			printf(1, "UNUSED");
-		} else if (p->state == EMBRYO) {
+		} else if (uproc->state == 1) {
 			printf(1, "EMBRYO");
-		} else if (p->state == SLEEPING) {
+		} else if (uproc->state == 2) {
 			printf(1, "SLEEPING");
-		} else if (p->state == RUNNABLE) {
+		} else if (uproc->state == 3) {
 			printf(1, "RUNNABLE");
-		} else if (p->state == RUNNING) {
+		} else if (uproc->state == 4) {
 			printf(1, "RUNNING");
-		} else if (p->state == ZOMBIE) {
+		} else if (uproc->state == 5) {
 			printf(1, "ZOMBIE");
 		}
 
-		printf(1, "\t%s\n", uproc->name);
+		printf(1, "    %s\n", uproc->name);
 		uproc++;
 	}
 

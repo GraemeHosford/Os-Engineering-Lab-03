@@ -547,7 +547,7 @@ int getprocs(int max, struct uproc *proctable) {
 			break;
 		} else {
 			proctable[x].pid = procs->pid;
-			proctable[x].ppid = procs->parent->pid;
+			proctable[x].ppid = procs->parent ? procs->parent->pid : 0;
 			proctable[x].sz = procs->sz;
 			proctable[x].state = procs->state;
 			safestrcpy(proctable[x].name, procs->name, 16);
