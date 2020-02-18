@@ -536,7 +536,7 @@ procdump(void)
   }
 }
 
-int getprocs(uint max, struct uproc *proctable) {
+int getprocs(int max, struct uproc *proctable) {
 	struct proc *procs;
 	int x = 0;
 
