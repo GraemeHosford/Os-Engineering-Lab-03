@@ -1,15 +1,24 @@
 #include "types.h"
-#include "stat.h"
 #include "user.h"
 #include "uproc.h"
 
 int main() {
 	const int MAX_PROCS = 10;
-	struct uproc proctable[MAX_PROCS];
+	struct uproc *proctable = malloc(sizeof(*table) * MAX_PROCS);
 
-	getprocs(MAX_PROCS, proctable);
 
-	struct uproc *uproc = &proctable[0];
+	if (proctable == 0) {
+		printf(1, "Not able to create process table\n");
+		exit();
+	}
+
+	int processes = getprocs(MAX_PROCS, proctable);
+
+	if (processes < 1) {
+		printf(1, "Error getting processes\n");
+		free(proctable);
+		exit();
+	}
 
 	printf(1, "PID\tPPID\tState\tName\n");
 	while (uproc != proctable[MAX_PROCS- 1]) {
@@ -33,5 +42,6 @@ int main() {
 		uproc++;
 	}
 
+	free(proctable);
 	exit();
 }
