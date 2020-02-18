@@ -22,7 +22,7 @@ int main() {
 
 	struct uproc *uproc = &proctable[0];
 
-	printf(1, "PID    PPID      State       Name\n");
+	printf(1, "PID    PPID      State       Size       Name\n");
 	while (uproc != &proctable[MAX_PROCS- 1]) {
 		printf(1, " %d      %d        ", uproc->pid, uproc->ppid);
 
@@ -40,7 +40,7 @@ int main() {
 			printf(1, "ZOMBIE");
 		}
 
-		printf(1, "    %s\n", uproc->name);
+		printf(1, "    %d      %s\n", uproc->sz, uproc->name);
 		uproc++;
 	}
 
