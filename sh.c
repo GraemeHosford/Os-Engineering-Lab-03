@@ -144,6 +144,7 @@ getcmd(char *buf, int nbuf)
 int
 main(void)
 {
+  trace(1);
   static char buf[100];
   int fd;
 

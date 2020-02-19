@@ -117,6 +117,7 @@ int sys_getprocs(void) {
 	if (argptr(1, (void*)&proctable, sizeof(struct uproc) * max) < 0) {
 		return -1;
 	}
-
+	
+  // Calling getprocs function in proc.c to get access to proctable
 	return getprocs(max, proctable);
 }
