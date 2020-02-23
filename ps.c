@@ -6,7 +6,6 @@ int main() {
 	const int MAX_PROCS = 10;
 	struct uproc *proctable = malloc(sizeof(struct uproc) * MAX_PROCS);
 
-
 	if (proctable == 0) {
 		printf(1, "Not able to create process table\n");
 		exit();
@@ -23,12 +22,11 @@ int main() {
 	struct uproc *uproc = &proctable[0];
 
 	printf(1, "PID    PPID      State       Size       Name\n");
-	while (uproc != &proctable[MAX_PROCS- 1]) {
+	/* No reason to show unused processes as all values are zeroed out anyway */
+	while (uproc != &proctable[MAX_PROCS- 1] && uproc-> state != 0) {
 		printf(1, " %d      %d        ", uproc->pid, uproc->ppid);
 
-		if (uproc->state == 0) {
-			printf(1, "UNUSED");
-		} else if (uproc->state == 1) {
+		if (uproc->state == 1) {
 			printf(1, "EMBRYO");
 		} else if (uproc->state == 2) {
 			printf(1, "SLEEPING");
