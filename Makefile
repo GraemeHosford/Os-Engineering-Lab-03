@@ -186,6 +186,7 @@ UPROGS=\
 	_mv\
 	_try\
 	_ps\
+	_head\
 	_big\
 
 fs.img: mkfs README $(UPROGS)
